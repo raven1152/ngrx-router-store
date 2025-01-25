@@ -1,0 +1,16 @@
+@let routeParams = routeParams$ | async;
+<div>
+  <a
+    *ngFor="let customer of customers$ | async as customers"
+    href="/customers/{{customer.customerId}}">
+    {{ customer.customerName }}
+  </a>
+  <div *ngIf="routeParams">
+    <h3>Route Params:</h3>
+    <pre>{{ routeParams | json }}</pre>
+    <div *ngIf="routeParams['id']">
+      <h3>Selected Customer:</h3>
+      <pre>{{ selectedCustomer$ | async | json }}</pre>
+    </div>
+  </div>
+</div>
